@@ -1,17 +1,23 @@
-# Annuus
+# Annuus No Daisy
 
-![](https://count.getloli.com/@@cao-awa.annuus?name=%40cao-awa.annuus&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
+Annuus No Daisy is a mod for minecraft networking and fork of Annuus by `cao-awa` 
 
-Annuus is a mod for minecraft networking,
-improves network performance and makes the game more available for running on large server.
+Annuus No Daisy improves network performance and reduces memory usage, making it ideal for running a larger server. I am developing this fork for my `1.21.1` NeoForge, but it also supports Fabric  
 
-Supported minecraft 1.21.4 with fabric loader and neoforge loader, needs fabric-api when using fabric, needs
-architectury-api when using neoforge.
+If a player doesn't have Annuus No Daisy, network packets will send normally.
 
-When the player doesn't install annuus on the client, network packet will send normally like vanilla.
+Requires Fabric API on Fabric. No Dependency for NeoForge 
+
+# Fork Goals
+
+* Remove dependency on Daisy, a proprietary library 'provider' by `cao-awa` (done)
+  * I pathologically hate mods like this because they serve no use other that to bloat my installed mods size and your download revenue
+  * Note that mods that provide at least a 'use' are fine, but Annuus did not even need to set a non-modrinth dependency for the mod because Daisy does nothing!    
+* Remove bloat from Annuus
+* Make Annuus better!
 
 # Performance
-
+    
 ## Chunk data
 > Deflate 1 has less CPU usage, even though that performance is not good enough here \
 > So it be considered as a compression option

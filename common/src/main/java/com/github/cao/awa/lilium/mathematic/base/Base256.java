@@ -1,6 +1,5 @@
 package com.github.cao.awa.lilium.mathematic.base;
 
-import com.github.cao.awa.apricot.annotations.Stable;
 import com.github.cao.awa.apricot.io.bytes.reader.BytesReader;
 
 /**
@@ -10,7 +9,6 @@ import com.github.cao.awa.apricot.io.bytes.reader.BytesReader;
  * @author cao_awa
  * @since 1.0.0
  */
-@Stable
 public class Base256 {
     /**
      * Convert a long to 8 bytes.

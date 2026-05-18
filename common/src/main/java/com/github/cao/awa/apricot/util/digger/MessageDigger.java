@@ -1,6 +1,5 @@
 package com.github.cao.awa.apricot.util.digger;
 
-import com.github.cao.awa.apricot.annotations.Stable;
 import com.github.cao.awa.lilium.mathematic.Mathematics;
 import com.github.cao.awa.sinuatum.manipulate.Manipulate;
 
@@ -9,7 +8,6 @@ import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
-@Stable
 public class MessageDigger {
     private static final int BUF_SIZE = 16384;
 

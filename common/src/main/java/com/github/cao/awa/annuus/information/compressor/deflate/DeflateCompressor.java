@@ -2,7 +2,6 @@ package com.github.cao.awa.annuus.information.compressor.deflate;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressors;
-import com.github.cao.awa.apricot.annotations.Stable;
 import com.github.cao.awa.sinuatum.util.io.IOUtil;
 
 import java.io.ByteArrayInputStream;
@@ -11,7 +10,6 @@ import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
-@Stable
 public class DeflateCompressor implements InformationCompressor {
     public static final DeflateCompressor BEST_INSTANCE = InformationCompressors.register(new DeflateCompressor(Deflater.BEST_COMPRESSION));
     public static final DeflateCompressor DEFLATE_8_INSTANCE = InformationCompressors.register(new DeflateCompressor(8));
