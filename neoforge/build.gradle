@@ -35,10 +35,12 @@ dependencies {
     neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
-    shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
+
+    shadowBundle(project(path: ':common', configuration: 'transformProductionNeoForge')) {
+        transitive false
+    }
 
     shadowBundle 'com.alibaba.fastjson2:fastjson2:2.0.50'
-
     shadowBundle 'com.github.cao-awa:Catheter:1.0.46'
     shadowBundle 'com.github.cao-awa:Sinuatum:1.0.17'
 }
