@@ -7,7 +7,6 @@ import io.netty.buffer.Unpooled;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.RegistryByteBuf;
 
-import java.util.Arrays;
 import java.util.function.Supplier;
 
 public class AnnuusCompressUtil {

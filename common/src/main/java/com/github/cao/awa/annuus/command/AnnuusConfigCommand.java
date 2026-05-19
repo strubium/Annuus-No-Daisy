@@ -11,7 +11,6 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
@@ -20,10 +19,6 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 public class AnnuusConfigCommand {
-    public static void register(MinecraftServer server) {
-        register(server.getCommandManager().getDispatcher());
-    }
-
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
                 CommandManager.literal("annuus")

@@ -3,15 +3,10 @@ package com.github.cao.awa.annuus.command;
 import com.github.cao.awa.annuus.Annuus;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 
 public class AnnuusDebugCommand {
-    public static void register(MinecraftServer server) {
-        register(server.getCommandManager().getDispatcher());
-    }
-
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
                         CommandManager.literal("annuusug").requires(
