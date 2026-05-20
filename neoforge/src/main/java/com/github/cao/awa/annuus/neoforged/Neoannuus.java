@@ -24,12 +24,11 @@ import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import static com.github.cao.awa.annuus.Annuus.LOGGER;
 
 @Mod("annuus")
 public class Neoannuus {
-    public static final Logger LOGGER = LogManager.getLogger("Neoannuus");
 
     public Neoannuus(IEventBus eventBus) {
         eventBus.addListener(FMLCommonSetupEvent.class, this::onCommonSetup);
@@ -37,7 +36,7 @@ public class Neoannuus {
         NeoForge.EVENT_BUS.addListener(RegisterCommandsEvent.class, Neoannuus::registerCommand);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            Neoannuus.LOGGER.debug("Loading annuus neoforge client");
+            LOGGER.debug("Loading annuus neoforge client");
 
             Annuus.isServer = false;
 
@@ -47,7 +46,7 @@ public class Neoannuus {
             );
         }
         if (FMLEnvironment.dist == Dist.DEDICATED_SERVER) {
-            Neoannuus.LOGGER.debug("Loading annuus neoforge server");
+            LOGGER.debug("Loading annuus neoforge server");
 
             Annuus.isServer = true;
         }
@@ -88,7 +87,7 @@ public class Neoannuus {
     public static void registerCommand(RegisterCommandsEvent event) {
         CommandDispatcher<ServerCommandSource> dispatcher = event.getDispatcher();
 
-        Neoannuus.LOGGER.info("Registering annuus commands");
+        LOGGER.info("Registering annuus commands");
         Commands.registerCommands(dispatcher);
     }
 

@@ -11,8 +11,6 @@ import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(PlayerManager.class)
 public class PlayerManagerMixin {
-    private static final Logger LOGGER = LogManager.getLogger("AnnuusRecipes");
 
     @Shadow
     @Final

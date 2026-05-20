@@ -9,11 +9,10 @@ import com.github.cao.awa.annuus.network.packet.server.notice.NoticeServerAnnuus
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import static com.github.cao.awa.annuus.Annuus.LOGGER;
 
 public class Annuusic implements ModInitializer {
-    public static final Logger LOGGER = LogManager.getLogger("Annuusic");
 
     @Override
     public void onInitialize() {
@@ -30,7 +29,7 @@ public class Annuusic implements ModInitializer {
         PayloadTypeRegistry.configurationC2S().register(NoticeServerAnnuusPayload.IDENTIFIER, NoticeServerAnnuusPayload.CODEC);
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
-            Annuusic.LOGGER.info("Registering commands");
+            LOGGER.info("Registering commands");
             Commands.registerCommands(server.getCommandManager().getDispatcher());
         });
     }
