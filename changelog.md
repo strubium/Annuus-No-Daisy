@@ -1,3 +1,10 @@
+# 1.0.14
+* Removed all the unused Apricot/Lilium/Viburnum stuff 
+* Replaced ApricotCollectionFactor with direct object creation
+* NeoForge: Removed Client and Server mods, everything is done inside the Neoannuus container\
+* Replaced Fabric/NeoForge mods with a unified one
+* No longer keep track of the "loadingPlatform" using a variable 
+
 # 1.0.13
 First Version
 
