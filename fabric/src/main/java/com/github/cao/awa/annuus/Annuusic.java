@@ -18,8 +18,6 @@ public class Annuusic implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Loading annuus using fabric bootstrap");
 
-        Annuus.loadingPlatform = "fabric";
-
         Annuus.onInitialize();
 
         PayloadTypeRegistry.playS2C().register(CollectedChunkDataPayload.IDENTIFIER, CollectedChunkDataPayload.CODEC);

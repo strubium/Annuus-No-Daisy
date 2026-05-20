@@ -10,7 +10,6 @@ public class Annuus {
     public static final int PROTOCOL_VERSION_ID = 4;
     public static final AnnuusConfig CONFIG = new AnnuusConfig();
     public static final AnnuusConfig PERSISTENT_CONFIG = new AnnuusConfig();
-    public static String loadingPlatform = "fabric";
     public static boolean isServer = true;
     public static long processedChunks = 0;
     public static long processedBytes = 0;
@@ -21,7 +20,7 @@ public class Annuus {
     public static boolean enableDebugs = false;
 
     public static void onInitialize() {
-        LOGGER.info("Annuus '{}' loading on platform '{}'", VERSION, loadingPlatform);
+        LOGGER.info("Loading Annuus '{}'", VERSION);
         CONFIG.load();
         PERSISTENT_CONFIG.copyFrom(CONFIG);
         writeConfig();

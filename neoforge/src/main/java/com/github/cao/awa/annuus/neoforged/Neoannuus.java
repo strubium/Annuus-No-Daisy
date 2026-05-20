@@ -53,8 +53,6 @@ public class Neoannuus {
     }
 
     public void onCommonSetup(FMLCommonSetupEvent event) {
-        Annuus.loadingPlatform = "neoforge";
-
         Annuus.onInitialize();
 
         // Sets the current network version

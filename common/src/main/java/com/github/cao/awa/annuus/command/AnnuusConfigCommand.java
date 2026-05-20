@@ -27,12 +27,12 @@ public class AnnuusConfigCommand {
 
                             if (context.getSource().getPlayer() != null) {
                                 context.getSource().sendFeedback(
-                                        () -> Text.of("Annuus '" + Annuus.VERSION + "'(" + Annuus.loadingPlatform + ", protocol version " + ((AnnuusVersionStorage) context.getSource().getPlayer()).getAnnuusVersion() + ") successfully loaded, has " + enabledConfigs + " configs enabled"),
+                                        () -> Text.of("Annuus '" + Annuus.VERSION + ", protocol version " + ((AnnuusVersionStorage) context.getSource().getPlayer()).getAnnuusVersion() + ") successfully loaded, has " + enabledConfigs + " configs enabled"),
                                         false
                                 );
                             } else {
                                 context.getSource().sendFeedback(
-                                        () -> Text.of("Annuus '" + Annuus.VERSION + "'(" + Annuus.loadingPlatform + ") successfully loaded, has " + enabledConfigs + " configs enabled"),
+                                        () -> Text.of("Annuus '" + Annuus.VERSION + " successfully loaded, has " + enabledConfigs + " configs enabled"),
                                         false
                                 );
                             }
