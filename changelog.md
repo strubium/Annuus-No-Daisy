@@ -4,6 +4,8 @@
 * NeoForge: Removed Client and Server mods, everything is done inside the Neoannuus container\
 * Replaced Fabric/NeoForge mods with a unified one
 * No longer keep track of the "loadingPlatform" using a variable 
+* Removed "Catheter" and "Sinuatum"
+  * Jar size reduction; 3 MiB → 2.8 MiB
 
 # 1.0.13
 First Version
