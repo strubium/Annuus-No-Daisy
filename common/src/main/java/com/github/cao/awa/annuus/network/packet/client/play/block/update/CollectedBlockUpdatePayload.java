@@ -3,8 +3,7 @@ package com.github.cao.awa.annuus.network.packet.client.play.block.update;
 import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
-import com.github.cao.awa.annuus.util.compress.AnnuusCompressUtil;
-import com.github.cao.awa.sinuatum.util.collection.CollectionFactor;
+import com.github.cao.awa.annuus.util.AnnuusCompressUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.Block;
@@ -17,6 +16,7 @@ import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.network.packet.s2c.common.CustomPayloadS2CPacket;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public record CollectedBlockUpdatePayload(
@@ -59,7 +59,7 @@ public record CollectedBlockUpdatePayload(
                 states[i] = blockStateCodec.decode(delegate);
             }
 
-            Map<Long, BlockState> committed = CollectionFactor.hashMap();
+            Map<Long, BlockState> committed = new HashMap<>();
             for (int i = 0; i < size; i++) {
                 committed.put(positions[i], states[i]);
             }

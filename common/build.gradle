@@ -9,7 +9,4 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.50'
-
-    implementation 'com.github.cao-awa:Catheter:1.0.46'
-    implementation 'com.github.cao-awa:Sinuatum:1.0.17'
 }

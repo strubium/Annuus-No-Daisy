@@ -4,7 +4,7 @@ import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
 import com.github.cao.awa.annuus.update.ChunkBlockUpdateDetails;
-import com.github.cao.awa.annuus.util.compress.AnnuusCompressUtil;
+import com.github.cao.awa.annuus.util.AnnuusCompressUtil;
 import io.netty.buffer.Unpooled;
 import it.unimi.dsi.fastutil.longs.Long2ObjectRBTreeMap;
 import net.minecraft.block.Block;

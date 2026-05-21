@@ -11,9 +11,7 @@ import com.github.cao.awa.annuus.network.packet.client.play.block.update.Collect
 import com.github.cao.awa.annuus.network.packet.client.play.chunk.update.CollectedChunkBlockUpdatePayload;
 import com.github.cao.awa.annuus.network.packet.client.play.chunk.data.CollectedChunkDataPayload;
 import com.github.cao.awa.annuus.network.packet.client.play.recipe.ShortRecipeSyncPayload;
-import com.github.cao.awa.sinuatum.manipulate.Manipulate;
-import com.github.cao.awa.sinuatum.util.collection.CollectionFactor;
-import com.github.cao.awa.sinuatum.util.io.IOUtil;
+import com.github.cao.awa.annuus.util.IOUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -23,13 +21,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
 public class AnnuusConfig {
     private static final Logger LOGGER = LogManager.getLogger("AnnuusConfig");
     private static final File CONFIG_FILE = new File("config/annuus.json");
-    private static final Set<String> COMPRESS_OPTIONS = CollectionFactor.hashSet(
+    private static final Set<String> COMPRESS_OPTIONS = new HashSet<>(List.of(
             "no_compress",
             "best_compress",
             "best_speed",
@@ -43,7 +43,7 @@ public class AnnuusConfig {
             "deflate_8",
             "deflate_9",
             "lz4"
-    );
+    ));
     private static final Function<String, InformationCompressor> COMPRESSOR_FETCHER = (compressOption) -> {
         if (compressOption.startsWith("deflate_")) {
             return switch (compressOption.replace("deflate_", "")) {
@@ -147,10 +147,16 @@ public class AnnuusConfig {
         if (value == null) {
             return null;
         }
-        if (configKey.type().isInstance(value) || configKey.type().isAssignableFrom(value.getClass())) {
-            return Manipulate.cast(value);
+
+        if (configKey.type().isInstance(value)) {
+            return configKey.type().cast(value);
         }
-        throw new IllegalArgumentException("Config '" + configKey.name() + "' required '" + configKey.type() + "' but got '" + value.getClass() + "'");
+
+        throw new IllegalArgumentException(
+                "Config '" + configKey.name() +
+                        "' required '" + configKey.type() +
+                        "' but got '" + value.getClass() + "'"
+        );
     }
 
     public void load() {
@@ -217,7 +223,7 @@ public class AnnuusConfig {
     }
 
     public Set<AnnuusConfigKey<?>> collectEnabled() {
-        Set<AnnuusConfigKey<?>> enabled = CollectionFactor.hashSet();
+        Set<AnnuusConfigKey<?>> enabled = new HashSet<>();
 
         if (isEnableChunkCompress()) {
             enabled.add(CHUNK_COMPRESS);

@@ -3,8 +3,7 @@ package com.github.cao.awa.annuus.network.packet.client.play.chunk.data;
 import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
-import com.github.cao.awa.annuus.util.compress.AnnuusCompressUtil;
-import com.github.cao.awa.sinuatum.util.collection.CollectionFactor;
+import com.github.cao.awa.annuus.util.AnnuusCompressUtil;
 import io.netty.buffer.Unpooled;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -20,6 +19,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.WorldChunk;
 import net.minecraft.world.chunk.light.LightingProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public record CollectedChunkDataPayload(
@@ -46,8 +46,8 @@ public record CollectedChunkDataPayload(
     public static CollectedChunkDataPayload createData(WorldChunk[] chunks, LightingProvider lightProvider) {
         IntList xPositions = new IntArrayList();
         IntList zPositions = new IntArrayList();
-        List<ChunkData> chunksData = CollectionFactor.arrayList();
-        List<LightData> lightsData = CollectionFactor.arrayList();
+        List<ChunkData> chunksData = new ArrayList<>();
+        List<LightData> lightsData = new ArrayList<>();
 
         for (WorldChunk chunk : chunks) {
             ChunkPos chunkPos = chunk.getPos();
@@ -83,7 +83,7 @@ public record CollectedChunkDataPayload(
                 zPositions.add(delegate.readVarInt());
             }
 
-            List<ChunkData> chunkDataList = CollectionFactor.arrayList();
+            List<ChunkData> chunkDataList = new ArrayList<>();
 
             for (int i = 0; i < size; i++) {
                 int chunkX = xPositions.getInt(i);
@@ -92,7 +92,7 @@ public record CollectedChunkDataPayload(
                 chunkDataList.add(new ChunkData(delegate, chunkX, chunkZ));
             }
 
-            List<LightData> lightDataList = CollectionFactor.arrayList();
+            List<LightData> lightDataList = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 int chunkX = xPositions.getInt(i);
                 int chunkZ = zPositions.getInt(i);

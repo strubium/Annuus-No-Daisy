@@ -1,10 +1,10 @@
 package com.github.cao.awa.annuus.recipe;
 
-import com.github.cao.awa.sinuatum.util.collection.CollectionFactor;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class AnnuusRecipeEntries {
@@ -19,7 +19,7 @@ public class AnnuusRecipeEntries {
     public static AnnuusRecipeEntries create(RecipeEntry<?>[] entries) {
         AnnuusRecipeEntry[] recipeEntries = new AnnuusRecipeEntry[entries.length];
 
-        Map<String, Integer> replacements = CollectionFactor.hashMap();
+        Map<String, Integer> replacements = new HashMap<>();
 
         int replacementId = 0;
         for (RecipeEntry<?> entry : entries) {
@@ -55,7 +55,7 @@ public class AnnuusRecipeEntries {
     public static AnnuusRecipeEntries decode(RegistryByteBuf delegate) {
         int replacementsSize = delegate.readVarInt();
 
-        Map<String, Integer> replacements = CollectionFactor.hashMap();
+        Map<String, Integer> replacements = new HashMap<>();
 
         for (int i = 0; i < replacementsSize; i++) {
             int replacementId = delegate.readVarInt();
@@ -77,7 +77,7 @@ public class AnnuusRecipeEntries {
     public RecipeEntry<?>[] toVanilla() {
         RecipeEntry<?>[] recipes = new RecipeEntry[this.recipeEntries.length];
 
-        Map<Integer, String> reverseReplacements = CollectionFactor.hashMap();
+        Map<Integer, String> reverseReplacements = new HashMap<>();
 
         this.replacements.forEach((key, id) -> reverseReplacements.put(id, key));
 

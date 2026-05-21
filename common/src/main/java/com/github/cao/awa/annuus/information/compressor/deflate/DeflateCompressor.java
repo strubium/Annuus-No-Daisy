@@ -2,7 +2,7 @@ package com.github.cao.awa.annuus.information.compressor.deflate;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressors;
-import com.github.cao.awa.sinuatum.util.io.IOUtil;
+import com.github.cao.awa.annuus.util.IOUtil;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

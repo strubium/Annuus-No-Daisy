@@ -1,4 +1,4 @@
-package com.github.cao.awa.annuus.util.compress;
+package com.github.cao.awa.annuus.util;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressors;

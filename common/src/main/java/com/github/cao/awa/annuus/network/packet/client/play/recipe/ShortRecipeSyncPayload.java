@@ -1,15 +1,10 @@
 package com.github.cao.awa.annuus.network.packet.client.play.recipe;
 
-import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
 import com.github.cao.awa.annuus.recipe.AnnuusRecipeEntries;
-import com.github.cao.awa.annuus.update.ChunkBlockUpdateDetails;
-import com.github.cao.awa.annuus.util.compress.AnnuusCompressUtil;
+import com.github.cao.awa.annuus.util.AnnuusCompressUtil;
 import io.netty.buffer.Unpooled;
-import it.unimi.dsi.fastutil.longs.Long2ObjectRBTreeMap;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
@@ -17,9 +12,6 @@ import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.network.packet.s2c.common.CustomPayloadS2CPacket;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.ChunkSectionPos;
-
-import java.util.*;
 
 public record ShortRecipeSyncPayload(
         AnnuusRecipeEntries recipes

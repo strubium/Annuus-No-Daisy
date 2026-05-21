@@ -1,11 +1,10 @@
 package com.github.cao.awa.annuus.information.compressor;
 
-import com.github.cao.awa.sinuatum.util.collection.CollectionFactor;
-
+import java.util.HashMap;
 import java.util.Map;
 
 public class InformationCompressors {
-    private static final Map<Integer, InformationCompressor> COMPRESSORS = CollectionFactor.hashMap();
+    private static final Map<Integer, InformationCompressor> COMPRESSORS = new HashMap<>();
 
     public static <X extends InformationCompressor> X register(X compressor) {
         COMPRESSORS.put(compressor.getId(), compressor);
