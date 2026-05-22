@@ -10,6 +10,9 @@ package com.github.cao.awa.annuus.information.compressor;
 public interface InformationCompressor {
     byte[] EMPTY_BYTES = new byte[0];
 
+    String getName();
+
+
     int getId();
 
     /**

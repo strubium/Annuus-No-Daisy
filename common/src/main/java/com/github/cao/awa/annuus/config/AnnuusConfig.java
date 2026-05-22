@@ -2,11 +2,10 @@ package com.github.cao.awa.annuus.config;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSONWriter;
+import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.config.key.AnnuusConfigKey;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
-import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
-import com.github.cao.awa.annuus.information.compressor.inaction.InactionCompressor;
-import com.github.cao.awa.annuus.information.compressor.lz4.Lz4Compressor;
+import com.github.cao.awa.annuus.information.compressor.InformationCompressorRegistry;
 import com.github.cao.awa.annuus.network.packet.client.play.block.update.CollectedBlockUpdatePayload;
 import com.github.cao.awa.annuus.network.packet.client.play.chunk.update.CollectedChunkBlockUpdatePayload;
 import com.github.cao.awa.annuus.network.packet.client.play.chunk.data.CollectedChunkDataPayload;
@@ -43,38 +42,28 @@ public class AnnuusConfig {
             "deflate_9",
             "lz4"
     ));
-    private static final Function<String, InformationCompressor> COMPRESSOR_FETCHER = (compressOption) -> {
-        if (compressOption.startsWith("deflate_")) {
-            return switch (compressOption.replace("deflate_", "")) {
-                case "1" -> DeflateCompressor.FASTEST_INSTANCE;
-                case "2" -> DeflateCompressor.DEFLATE_2_INSTANCE;
-                case "3" -> DeflateCompressor.DEFLATE_3_INSTANCE;
-                case "4" -> DeflateCompressor.DEFLATE_4_INSTANCE;
-                case "5" -> DeflateCompressor.DEFLATE_5_INSTANCE;
-                case "6" -> DeflateCompressor.DEFLATE_6_INSTANCE;
-                case "7" -> DeflateCompressor.DEFLATE_7_INSTANCE;
-                case "8" -> DeflateCompressor.DEFLATE_8_INSTANCE;
-                case "9" -> DeflateCompressor.BEST_INSTANCE;
-                default -> throw new IllegalStateException("Unexpected value: " + compressOption);
-            };
-        } else if (compressOption.equals("lz4")) {
-            return Lz4Compressor.INSTANCE;
-        } else if (compressOption.equals("no_compress")) {
-            return InactionCompressor.INSTANCE;
-        }
 
-        return switch (compressOption) {
-            case "best_compress" -> DeflateCompressor.BEST_INSTANCE;
-            case "best_speed" -> DeflateCompressor.FASTEST_INSTANCE;
-            default -> throw new IllegalStateException("Unexpected value: " + compressOption);
-        };
+    private static final Function<String, InformationCompressor> COMPRESSOR_FETCHER = compressOption -> switch (compressOption) {
+        case "best_compress" -> Annuus.BEST_INSTANCE;
+        case "best_speed" -> Annuus.FASTEST_INSTANCE;
+        default -> {
+            InformationCompressor compressor = InformationCompressorRegistry.getCompressor(compressOption);
+
+            if (compressor == null) {
+                throw new IllegalStateException("Unexpected value: " + compressOption);
+            }
+
+            yield compressor;
+        }
     };
+
     public static final AnnuusConfigKey<String> CHUNK_COMPRESS = AnnuusConfigKey.create(
             "chunk_compression",
             (compressOption) -> CollectedChunkDataPayload.setCurrentCompressor(COMPRESSOR_FETCHER.apply(compressOption)),
             "best_compress",
             COMPRESS_OPTIONS
     );
+
     public static final AnnuusConfigKey<String> BLOCK_UPDATES_COMPRESS = AnnuusConfigKey.create(
             "block_updates_compression",
             (compressOption) -> {
@@ -84,10 +73,12 @@ public class AnnuusConfig {
             "best_compress",
             COMPRESS_OPTIONS
     );
+
     public static final AnnuusConfigKey<Boolean> SHORT_RECIPES = AnnuusConfigKey.create(
             "short_recipes",
             true
     );
+
     public static final AnnuusConfigKey<String> SHORT_RECIPES_COMPRESS = AnnuusConfigKey.create(
             "short_recipes_compress",
             (compressOption) -> ShortRecipeSyncPayload.setCurrentCompressor(COMPRESSOR_FETCHER.apply(compressOption)),

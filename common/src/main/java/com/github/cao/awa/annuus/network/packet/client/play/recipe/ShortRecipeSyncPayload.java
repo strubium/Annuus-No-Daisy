@@ -1,5 +1,6 @@
 package com.github.cao.awa.annuus.network.packet.client.play.recipe;
 
+import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
 import com.github.cao.awa.annuus.recipe.AnnuusRecipeEntries;
@@ -21,7 +22,7 @@ public record ShortRecipeSyncPayload(
             ShortRecipeSyncPayload::encode,
             ShortRecipeSyncPayload::decode
     );
-    private static InformationCompressor currentCompressor = DeflateCompressor.BEST_INSTANCE;
+    private static InformationCompressor currentCompressor = Annuus.BEST_INSTANCE;
 
     public static void setCurrentCompressor(InformationCompressor compressor) {
         currentCompressor = compressor;

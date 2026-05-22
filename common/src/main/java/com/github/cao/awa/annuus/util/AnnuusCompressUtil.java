@@ -1,7 +1,7 @@
 package com.github.cao.awa.annuus.util;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
-import com.github.cao.awa.annuus.information.compressor.InformationCompressors;
+import com.github.cao.awa.annuus.information.compressor.InformationCompressorRegistry;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.PacketByteBuf;
@@ -32,7 +32,7 @@ public class AnnuusCompressUtil {
 
         buf.readBytes(data);
 
-        data = InformationCompressors.getCompressor(compressorId).decompress(data);
+        data = InformationCompressorRegistry.getCompressor(compressorId).decompress(data);
 
         return new PacketByteBuf(Unpooled.copiedBuffer(data));
     }

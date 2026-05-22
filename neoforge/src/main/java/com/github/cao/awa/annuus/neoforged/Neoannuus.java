@@ -58,9 +58,6 @@ public class Neoannuus {
         // Sets the current network version
         PayloadRegistrar registrar = new PayloadRegistrar("1");
 
-//        PayloadTypeRegistryImpl.PLAY_S2C.register(CollectedChunkDataPayload.IDENTIFIER, CollectedChunkDataPayload.CODEC);
-//        PayloadTypeRegistryImpl.CONFIGURATION_C2S.register(NoticeServerAnnuusPayload.IDENTIFIER, NoticeServerAnnuusPayload.CODEC);
-
         registrar.playToClient(CollectedBlockUpdatePayload.IDENTIFIER, CollectedBlockUpdatePayload.CODEC, (payload, context) -> {
             CollectedBlockUpdatePayloadHandler.updateBlocksFromPayload(payload, MinecraftClient.getInstance(), (ClientPlayerEntity) context.player());
         });

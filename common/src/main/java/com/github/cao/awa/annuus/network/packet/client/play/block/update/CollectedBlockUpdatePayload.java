@@ -27,7 +27,7 @@ public record CollectedBlockUpdatePayload(
             CollectedBlockUpdatePayload::encode,
             CollectedBlockUpdatePayload::decode
     );
-    private static InformationCompressor currentCompressor = DeflateCompressor.BEST_INSTANCE;
+    private static InformationCompressor currentCompressor = Annuus.BEST_INSTANCE;
 
     public static void setCurrentCompressor(InformationCompressor compressor) {
         currentCompressor = compressor;

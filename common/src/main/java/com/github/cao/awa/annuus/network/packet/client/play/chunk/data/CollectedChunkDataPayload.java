@@ -33,7 +33,7 @@ public record CollectedChunkDataPayload(
             CollectedChunkDataPayload::encode,
             CollectedChunkDataPayload::decode
     );
-    private static InformationCompressor currentCompressor = DeflateCompressor.BEST_INSTANCE;
+    private static InformationCompressor currentCompressor = Annuus.BEST_INSTANCE;
 
     public static void setCurrentCompressor(InformationCompressor compressor) {
         currentCompressor = compressor;

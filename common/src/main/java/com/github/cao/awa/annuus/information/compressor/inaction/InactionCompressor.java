@@ -1,10 +1,14 @@
 package com.github.cao.awa.annuus.information.compressor.inaction;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
-import com.github.cao.awa.annuus.information.compressor.InformationCompressors;
+import com.github.cao.awa.annuus.information.compressor.InformationCompressorRegistry;
 
 public class InactionCompressor implements InformationCompressor {
-    public static final InactionCompressor INSTANCE = InformationCompressors.register(new InactionCompressor());
+
+    @Override
+    public String getName() {
+        return "no_compress";
+    }
 
     @Override
     public int getId() {
