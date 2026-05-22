@@ -1,7 +1,6 @@
 package com.github.cao.awa.annuus.information.compressor.inaction;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
-import com.github.cao.awa.annuus.information.compressor.InformationCompressorRegistry;
 
 public class InactionCompressor implements InformationCompressor {
 

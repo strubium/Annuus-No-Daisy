@@ -1,7 +1,6 @@
 package com.github.cao.awa.annuus.information.compressor.deflate;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
-import com.github.cao.awa.annuus.information.compressor.InformationCompressorRegistry;
 import com.github.cao.awa.annuus.util.IOUtil;
 
 import java.io.ByteArrayInputStream;

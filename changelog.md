@@ -1,3 +1,10 @@
+# 1.0.15
+* Removed 2 unused Mixins classes. 
+* Made the InformationCompressorRegistry use names. allows the config to be more code driven
+  * Ex: A addon mod adds some obscure compression algorithms, now they can be directly selected in the `annuus.json` config
+* Fixed Lz4Compressor using the length of the compressed message, not the length of the original method like it should
+
+
 # 1.0.14
 * Removed all the unused Apricot/Lilium/Viburnum stuff 
 * Replaced ApricotCollectionFactor with direct object creation

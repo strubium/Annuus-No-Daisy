@@ -1,7 +1,6 @@
 package com.github.cao.awa.annuus.information.compressor.lz4;
 
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
-import com.github.cao.awa.annuus.information.compressor.InformationCompressorRegistry;
 import net.jpountz.lz4.LZ4Compressor;
 import net.jpountz.lz4.LZ4Factory;
 
