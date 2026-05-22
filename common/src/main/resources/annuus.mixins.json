@@ -4,8 +4,7 @@
   "package": "com.github.cao.awa.annuus.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "chunk.DecoderHandlerMixin",
-    "chunk.sender.ChunkDataSenderMixin",
+    "chunk.ChunkDataSenderMixin",
     "network.ChunkDeltaUpdateS2CPacketAccessor",
     "network.ChunkDeltaUpdateS2CPacketMixin",
     "network.ServerPlayNetworkHandlerMixin",

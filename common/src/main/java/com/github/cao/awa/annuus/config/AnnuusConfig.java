@@ -12,8 +12,6 @@ import com.github.cao.awa.annuus.network.packet.client.play.chunk.update.Collect
 import com.github.cao.awa.annuus.network.packet.client.play.chunk.data.CollectedChunkDataPayload;
 import com.github.cao.awa.annuus.network.packet.client.play.recipe.ShortRecipeSyncPayload;
 import com.github.cao.awa.annuus.util.IOUtil;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,8 +24,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
+import static com.github.cao.awa.annuus.Annuus.LOGGER;
+
 public class AnnuusConfig {
-    private static final Logger LOGGER = LogManager.getLogger("AnnuusConfig");
     private static final File CONFIG_FILE = new File("config/annuus.json");
     private static final Set<String> COMPRESS_OPTIONS = new HashSet<>(List.of(
             "no_compress",
@@ -206,11 +205,11 @@ public class AnnuusConfig {
 
     public void print() {
         if (isEnableChunkCompress()) {
-            LOGGER.info("Annuus is enabled chunk compression: " + chunkCompress());
+            LOGGER.info("Annuus is enabled chunk compression: {}", chunkCompress());
         }
 
         if (isEnableBlockUpdatesCompress()) {
-            LOGGER.info("Annuus is enabled block updates compression: " + blockUpdatesCompress());
+            LOGGER.info("Annuus is enabled block updates compression: {}", blockUpdatesCompress());
         }
 
         if (isEnableShortRecipes()) {
@@ -218,7 +217,7 @@ public class AnnuusConfig {
         }
 
         if (isEnableShortRecipesCompress()) {
-            LOGGER.info("Annuus is enabled short recipes synchronize compression: " + shortRecipesCompress());
+            LOGGER.info("Annuus is enabled short recipes synchronize compression: {}", shortRecipesCompress());
         }
     }
 

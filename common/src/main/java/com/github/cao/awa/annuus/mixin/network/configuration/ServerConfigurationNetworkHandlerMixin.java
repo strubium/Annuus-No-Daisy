@@ -9,14 +9,13 @@ import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ConnectedClientData;
 import net.minecraft.server.network.ServerConfigurationNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
+import static com.github.cao.awa.annuus.Annuus.LOGGER;
+
 @Mixin(ServerConfigurationNetworkHandler.class)
 public class ServerConfigurationNetworkHandlerMixin {
-    private static final Logger LOGGER = LoggerFactory.getLogger("AnnuusConfigurationHandler");
 
     @WrapOperation(
             method = "onReady",

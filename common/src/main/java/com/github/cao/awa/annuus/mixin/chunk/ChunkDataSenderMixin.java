@@ -1,11 +1,10 @@
-package com.github.cao.awa.annuus.mixin.chunk.sender;
+package com.github.cao.awa.annuus.mixin.chunk;
 
 import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.network.packet.client.play.chunk.data.CollectedChunkDataPayload;
 import com.github.cao.awa.annuus.version.AnnuusVersionStorage;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.s2c.play.ChunkSentS2CPacket;
 import net.minecraft.network.packet.s2c.play.StartChunkSendS2CPacket;
 import net.minecraft.server.network.ChunkDataSender;

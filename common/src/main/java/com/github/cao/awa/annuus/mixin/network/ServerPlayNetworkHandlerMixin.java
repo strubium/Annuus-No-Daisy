@@ -1,23 +1,18 @@
 package com.github.cao.awa.annuus.mixin.network;
 
-import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.version.AnnuusVersionStorage;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import static com.github.cao.awa.annuus.Annuus.LOGGER;
 
 @Mixin(ServerPlayNetworkHandler.class)
 abstract public class ServerPlayNetworkHandlerMixin extends ServerCommonNetworkHandler {
-    private static final Logger LOGGER = LoggerFactory.getLogger("AnnuusPlayHandler");
 
     public ServerPlayNetworkHandlerMixin(MinecraftServer server, ClientConnection connection, ConnectedClientData clientData) {
         super(server, connection, clientData);
