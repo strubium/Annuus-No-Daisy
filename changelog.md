@@ -3,6 +3,7 @@
 * Made the InformationCompressorRegistry use names. allows the config to be more code driven
   * Ex: A addon mod adds some obscure compression algorithms, now they can be directly selected in the `annuus.json` config
 * Fixed Lz4Compressor using the length of the compressed message, not the length of the original method like it should
+* New compressor option, [Snappy](https://github.com/xerial/snappy-java)
 
 
 # 1.0.14

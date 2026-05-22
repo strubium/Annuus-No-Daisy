@@ -41,6 +41,7 @@ dependencies {
     }
 
     shadowBundle 'com.alibaba.fastjson2:fastjson2:2.0.50'
+    shadowBundle "org.xerial.snappy:snappy-java:1.1.10.8"
 }
 
 processResources {

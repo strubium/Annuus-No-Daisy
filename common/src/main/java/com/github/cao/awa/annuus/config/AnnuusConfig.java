@@ -27,21 +27,6 @@ import static com.github.cao.awa.annuus.Annuus.LOGGER;
 
 public class AnnuusConfig {
     private static final File CONFIG_FILE = new File("config/annuus.json");
-    private static final Set<String> COMPRESS_OPTIONS = new HashSet<>(List.of(
-            "no_compress",
-            "best_compress",
-            "best_speed",
-            "deflate_1",
-            "deflate_2",
-            "deflate_3",
-            "deflate_4",
-            "deflate_5",
-            "deflate_6",
-            "deflate_7",
-            "deflate_8",
-            "deflate_9",
-            "lz4"
-    ));
 
     private static final Function<String, InformationCompressor> COMPRESSOR_FETCHER = compressOption -> switch (compressOption) {
         case "best_compress" -> Annuus.BEST_INSTANCE;
@@ -61,7 +46,7 @@ public class AnnuusConfig {
             "chunk_compression",
             (compressOption) -> CollectedChunkDataPayload.setCurrentCompressor(COMPRESSOR_FETCHER.apply(compressOption)),
             "best_compress",
-            COMPRESS_OPTIONS
+            InformationCompressorRegistry.getCompressors()
     );
 
     public static final AnnuusConfigKey<String> BLOCK_UPDATES_COMPRESS = AnnuusConfigKey.create(
@@ -71,7 +56,7 @@ public class AnnuusConfig {
                 CollectedChunkBlockUpdatePayload.setCurrentCompressor(COMPRESSOR_FETCHER.apply(compressOption));
             },
             "best_compress",
-            COMPRESS_OPTIONS
+            InformationCompressorRegistry.getCompressors()
     );
 
     public static final AnnuusConfigKey<Boolean> SHORT_RECIPES = AnnuusConfigKey.create(
@@ -83,7 +68,7 @@ public class AnnuusConfig {
             "short_recipes_compress",
             (compressOption) -> ShortRecipeSyncPayload.setCurrentCompressor(COMPRESSOR_FETCHER.apply(compressOption)),
             "best_compress",
-            COMPRESS_OPTIONS
+            InformationCompressorRegistry.getCompressors()
     );
 
     private final JSONObject config = new JSONObject();

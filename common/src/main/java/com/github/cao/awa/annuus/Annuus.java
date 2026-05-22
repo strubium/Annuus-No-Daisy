@@ -5,6 +5,7 @@ import com.github.cao.awa.annuus.information.compressor.InformationCompressorReg
 import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
 import com.github.cao.awa.annuus.information.compressor.inaction.InactionCompressor;
 import com.github.cao.awa.annuus.information.compressor.lz4.Lz4Compressor;
+import com.github.cao.awa.annuus.information.compressor.snappy.SnappyCompressor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,6 +37,7 @@ public class Annuus {
     public static final DeflateCompressor DEFLATE_3_INSTANCE = InformationCompressorRegistry.register(new DeflateCompressor(3));
     public static final DeflateCompressor DEFLATE_2_INSTANCE = InformationCompressorRegistry.register(new DeflateCompressor(2));
     public static final DeflateCompressor FASTEST_INSTANCE = InformationCompressorRegistry.register(new DeflateCompressor(Deflater.BEST_SPEED));
+    public static final SnappyCompressor SNAPPY_INSTANCE = InformationCompressorRegistry.register(new SnappyCompressor());
 
     public static void onInitialize() {
         LOGGER.info("Loading Annuus '{}'", VERSION);

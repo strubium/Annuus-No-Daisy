@@ -11,7 +11,6 @@ import java.util.zip.InflaterInputStream;
 
 public class DeflateCompressor implements InformationCompressor {
 
-
     private final int compressLevel;
     private final String name;
 

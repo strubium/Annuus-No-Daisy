@@ -2,6 +2,8 @@ package com.github.cao.awa.annuus.information.compressor;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.github.cao.awa.annuus.Annuus.LOGGER;
 
@@ -24,5 +26,12 @@ public class InformationCompressorRegistry {
 
     public static InformationCompressor getCompressor(String name) {
         return COMPRESSORS_BY_NAME.get(name);
+    }
+
+    public static Set<String> getCompressors() {
+        return COMPRESSORS_BY_NAME.values()
+                .stream()
+                .map(InformationCompressor::getName)
+                .collect(Collectors.toUnmodifiableSet());
     }
 }

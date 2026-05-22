@@ -9,4 +9,5 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.50'
+    implementation "org.xerial.snappy:snappy-java:1.1.10.8"
 }
