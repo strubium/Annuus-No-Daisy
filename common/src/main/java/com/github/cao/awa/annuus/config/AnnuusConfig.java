@@ -19,7 +19,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -153,8 +152,13 @@ public class AnnuusConfig {
 
     public void write() {
         try {
-            if (!CONFIG_FILE.getParentFile().exists()) {
-                CONFIG_FILE.getParentFile().mkdirs();
+            File parent = CONFIG_FILE.getParentFile();
+            if (parent != null && !parent.exists()) {
+                boolean ok = parent.mkdirs();
+                if (!ok) {
+                    LOGGER.warn("Failed to create config directory: {}", parent);
+                    return;
+                }
             }
             IOUtil.write(
                     new FileWriter(CONFIG_FILE, StandardCharsets.UTF_8),

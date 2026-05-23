@@ -2,7 +2,6 @@ package com.github.cao.awa.annuus.network.packet.client.play.block.update;
 
 import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
-import com.github.cao.awa.annuus.information.compressor.deflate.DeflateCompressor;
 import com.github.cao.awa.annuus.util.AnnuusCompressUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

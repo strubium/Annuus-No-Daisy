@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class SnappyCompressor implements InformationCompressor {
 
-
     @Override
     public String getName() {
         return "snappy";

@@ -10,9 +10,27 @@ package com.github.cao.awa.annuus.information.compressor;
 public interface InformationCompressor {
     byte[] EMPTY_BYTES = new byte[0];
 
+    /**
+     * Gets the name of this {@link InformationCompressor}. This is used for selecting this compressor in the config.
+     *
+     * @return the name of this {@link InformationCompressor}
+     *
+     * @author strubium
+     *
+     * @since 1.0.15
+     */
     String getName();
 
 
+    /**
+     * Gets the ID of this {@link InformationCompressor}
+     *
+     * @return the ID of this {@link InformationCompressor}
+     *
+     * @author cao_awa
+     *
+     * @since 1.0.0
+     */
     int getId();
 
     /**
