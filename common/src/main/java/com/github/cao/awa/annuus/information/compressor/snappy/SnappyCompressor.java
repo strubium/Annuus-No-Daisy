@@ -13,6 +13,11 @@ public class SnappyCompressor implements InformationCompressor {
     }
 
     @Override
+    public String getAlias() {
+        return null;
+    }
+
+    @Override
     public int getId() {
         return 11;
     }

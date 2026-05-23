@@ -28,8 +28,6 @@ public class AnnuusConfig {
     private static final File CONFIG_FILE = new File("config/annuus.json");
 
     private static final Function<String, InformationCompressor> COMPRESSOR_FETCHER = compressOption -> switch (compressOption) {
-        case "best_compress" -> Annuus.BEST_INSTANCE;
-        case "best_speed" -> Annuus.FASTEST_INSTANCE;
         default -> {
             InformationCompressor compressor = InformationCompressorRegistry.getCompressor(compressOption);
 

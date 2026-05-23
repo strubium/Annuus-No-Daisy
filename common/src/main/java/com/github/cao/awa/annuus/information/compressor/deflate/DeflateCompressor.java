@@ -25,6 +25,19 @@ public class DeflateCompressor implements InformationCompressor {
     }
 
     @Override
+    public String getAlias() {
+        if(this.name.equals("deflate_9")){
+            return "best_compress";
+        }
+        if(this.name.equals("deflate_1")){
+            return "best_speed";
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
     public int getId() {
         return this.compressLevel;
     }

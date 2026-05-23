@@ -15,6 +15,11 @@ public class Lz4Compressor implements InformationCompressor {
     }
 
     @Override
+    public String getAlias() {
+        return null;
+    }
+
+    @Override
     public int getId() {
         return 10;
     }

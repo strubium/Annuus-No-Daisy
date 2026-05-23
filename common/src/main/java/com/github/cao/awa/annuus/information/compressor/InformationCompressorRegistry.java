@@ -17,7 +17,27 @@ public class InformationCompressorRegistry {
         COMPRESSORS_BY_ID.put(compressor.getId(), compressor);
         COMPRESSORS_BY_NAME.put(compressor.getName(), compressor);
 
+        registerAlias(compressor);
+
         return compressor;
+    }
+
+    private static void registerAlias(InformationCompressor compressor) {
+        String name = compressor.getAlias();
+
+        if(name != null){
+            InformationCompressor existing = COMPRESSORS_BY_NAME.put(name, compressor);
+            LOGGER.info("Registering compressor alias: {} for: {}", name, compressor.getName());
+
+            if (existing != null && existing != compressor) {
+                LOGGER.warn(
+                        "Compressor name/alias '{}' was already registered by '{}', replaced with '{}'",
+                        name,
+                        existing.getName(),
+                        compressor.getName()
+                );
+            }
+        }
     }
 
     public static InformationCompressor getCompressor(int id) {

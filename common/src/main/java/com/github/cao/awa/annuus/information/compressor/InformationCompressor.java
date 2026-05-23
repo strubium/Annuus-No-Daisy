@@ -21,6 +21,17 @@ public interface InformationCompressor {
      */
     String getName();
 
+    /**
+     * Gets the alias of this {@link InformationCompressor}. This is used for selecting this compressor in the config.
+     *
+     * @return the alias of this {@link InformationCompressor}, or null if no alias
+     *
+     * @author strubium
+     *
+     * @since 1.0.15
+     */
+    String getAlias();
+
 
     /**
      * Gets the ID of this {@link InformationCompressor}

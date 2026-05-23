@@ -1,10 +1,11 @@
 # 1.0.15
 * Removed 2 unused Mixins classes. 
-* Made the InformationCompressorRegistry use names. allows the config to be more code driven
+* Made the InformationCompressorRegistry use names. Allows the config to be more code driven
   * Ex: A addon mod adds some obscure compression algorithms, now they can be directly selected in the `annuus.json` config
+  * Also supports alias, Ex `best_compress → deflate_9`
 * Fixed Lz4Compressor using the length of the compressed message, not the length of the original method like it should
 * New compressor option, [Snappy](https://github.com/xerial/snappy-java)
-
+* Updated Gradle from 8.12 to 8.14
 
 # 1.0.14
 * Removed all the unused Apricot/Lilium/Viburnum stuff 
