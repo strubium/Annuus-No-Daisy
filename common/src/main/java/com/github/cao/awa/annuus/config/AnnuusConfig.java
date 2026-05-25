@@ -2,7 +2,6 @@ package com.github.cao.awa.annuus.config;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSONWriter;
-import com.github.cao.awa.annuus.Annuus;
 import com.github.cao.awa.annuus.config.key.AnnuusConfigKey;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressor;
 import com.github.cao.awa.annuus.information.compressor.InformationCompressorRegistry;
@@ -27,16 +26,15 @@ import static com.github.cao.awa.annuus.Annuus.LOGGER;
 public class AnnuusConfig {
     private static final File CONFIG_FILE = new File("config/annuus.json");
 
-    private static final Function<String, InformationCompressor> COMPRESSOR_FETCHER = compressOption -> switch (compressOption) {
-        default -> {
-            InformationCompressor compressor = InformationCompressorRegistry.getCompressor(compressOption);
+    private static final Function<String, InformationCompressor> COMPRESSOR_FETCHER = compressOption -> {
+        InformationCompressor compressor =
+                InformationCompressorRegistry.getCompressor(compressOption);
 
-            if (compressor == null) {
-                throw new IllegalStateException("Unexpected value: " + compressOption);
-            }
-
-            yield compressor;
+        if (compressor == null) {
+            throw new IllegalStateException("Unexpected value: " + compressOption);
         }
+
+        return compressor;
     };
 
     public static final AnnuusConfigKey<String> CHUNK_COMPRESS = AnnuusConfigKey.create(

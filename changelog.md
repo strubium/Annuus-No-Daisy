@@ -1,5 +1,5 @@
 # 1.0.15
-* Removed 2 unused Mixins classes. 
+* Removed 2 unused Mixins classes, one for DecoderHandler and one for MinecraftServer
 * Made the InformationCompressorRegistry use names. Allows the config to be more code driven
   * Ex: A addon mod adds some obscure compression algorithms, now they can be directly selected in the `annuus.json` config
   * Also supports alias, Ex `best_compress → deflate_9`
